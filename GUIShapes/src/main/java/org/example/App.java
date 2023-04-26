@@ -1,7 +1,7 @@
 package org.example;
 
 import org.GUIApp.Circle;
-import org.GUIApp.Drawable;
+import org.GUIApp.DrawableShape;
 import org.GUIApp.RegularPolygon;
 import org.GUIApp.Square;
 
@@ -17,7 +17,7 @@ public class App extends JFrame implements ActionListener {
 
   private enum ShapesType {SQUARE, REGULAR_POLYGON, CIRCLE, TRIANGLE}
 
-  private ArrayList<Drawable> shapes = new ArrayList<Drawable>();
+  private ArrayList<DrawableShape> shapes = new ArrayList<DrawableShape>();
 
   public App() throws HeadlessException {
     super("Drawer app");
@@ -49,7 +49,7 @@ public class App extends JFrame implements ActionListener {
   public void actionPerformed(ActionEvent e) {
     for (int i = 0; i < ShapesType.values().length; i++) {
       if (e.getSource() == shapeButtons[i]) {
-        Drawable newShape = null;
+        DrawableShape newShape = null;
         switch (ShapesType.values()[i]) {
           case CIRCLE: {
             CircleParamsDialog dialog = new CircleParamsDialog(this, "Enter position for " + "Shape");
@@ -77,6 +77,8 @@ public class App extends JFrame implements ActionListener {
           newShape.draw((Graphics2D) canvas.getGraphics());
           shapes.add(newShape);
           System.out.println("Recently added shape: "+newShape);
+          System.out.println("Recently added shape area: "+newShape.getArea());
+          System.out.println("Recently added shape perimeter: "+newShape.getPerimeter());
         }
         break;
       }

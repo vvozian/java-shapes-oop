@@ -2,7 +2,7 @@ package org.GUIApp;
 
 import java.awt.*;
 
-public class Circle extends org.Geometry.Circle implements Drawable {
+public class Circle extends org.Geometry.Circle implements DrawableShape {
   public Circle(double posX, double posY, double radius) {
     super(posX, posY, radius);
   }
